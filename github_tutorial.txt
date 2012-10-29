@@ -3,11 +3,29 @@ pre admina:
 
 pre colaboratorov:
 
-1 nainstalovat git
-2 generovat ssh public and private key. 
-3 Public key nahrat na server githubu. 
-4 Private key skopirovat do .ssh/ ako id_rsa
-? 5 pridanie user.name 
-? 6 pridanie user.email
-7 git clone aresa zo github servera
+1 nainstalovat git 
+http://code.google.com/p/msysgit/downloads/list?can=3
 
+2 generovat ssh public and private key.
+puttyGen 
+http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html 
+
+3 Public key nahrat na server githubu.
+github.com -> settings -> shh key
+
+4 Private key skopirovat do .ssh/ ako id_rsa
+Users/Spravca/.ssh/ vytvorit cez command line 
+export transform OPENSSH do .ssh/
+
+5 git clone <ssh adresa zo github servera>
+
+6 pridanie user.name 
+
+7 pridanie user.email
+
+
+
+// Webots 
+http://www.cyberbotics.com/
+z DEMO na 30 dni PRO po registracii / prihlasit sa a potvrdit 30 dni ...!
+vo Webotse Tools->preferences->Licence
