@@ -20,10 +20,13 @@ export transform OPENSSH do .ssh/
 5 git clone <ssh adresa zo github servera>
 
 6 pridanie user.name 
+git config --local user.name "<name>"
 
 7 pridanie user.email
+git config --local user.email "<email>"
 
-
+8 git add <co>
+9 git submit (zaznamena zmeny)
 
 // Webots 
 http://www.cyberbotics.com/
