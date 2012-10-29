@@ -1,0 +1,13 @@
+pre admina:
+1 pridanie usera do projektu na github stranke
+
+pre colaboratorov:
+
+1 nainstalovat git
+2 generovat ssh public and private key. 
+3 Public key nahrat na server githubu. 
+4 Private key skopirovat do .ssh/ ako id_rsa
+? 5 pridanie user.name 
+? 6 pridanie user.email
+7 git clone aresa zo github servera
+
