@@ -1,1 +1,2 @@
 popis riesenia
+pridane cez gitextension
