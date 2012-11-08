@@ -1,0 +1,25 @@
+#VRML_SIM V6.0 utf8
+WorldInfo {
+  info [
+    "Description"
+    "Author: first name last name <e-mail>"
+    "Date: DD MMM YYYY"
+  ]
+}
+Viewpoint {
+  orientation 0.996619 -0.0328366 -0.0753171 5.14051
+  position -0.0493484 1.03333 0.581075
+}
+Background {
+  skyColor [
+    0.4 0.7 1
+  ]
+}
+PointLight {
+  location 0 0.345 0
+}
+DEF FLOOR CheckeredFloor {
+}
+EPuck {
+  controller "BRobot"
+}
