@@ -87,6 +87,12 @@
     <ClCompile Include="..\Webots srv API\Supervisor.cpp" />
     <ClCompile Include="..\Webots srv API\TouchSensor.cpp" />
     <ClCompile Include="BRobot.cpp" />
+    <ClCompile Include="RobotIO.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Webots)\include\controller\c;$(Webots)\include\controller\cpp</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="RobotIO.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

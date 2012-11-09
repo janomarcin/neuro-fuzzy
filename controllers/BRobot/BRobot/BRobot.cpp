@@ -4,6 +4,8 @@
 
 #include <iostream>
 
+#include "RobotIO.h"
+
 using namespace webots;
 
 #define TIME_STEP 32
@@ -11,15 +13,16 @@ using namespace webots;
 class MyRobot : public Robot 
 {
 private:
-	LED *led;
-	DistanceSensor *distanceSensor;
+	//LED *led;
+	//DistanceSensor *distanceSensor;
+	RobotIO robotIO;
 
 public:
 	MyRobot() : Robot() {
-		led = getLED("ledName");
+		//led = getLED("ledName");
 		
-		distanceSensor = getDistanceSensor("ps1");
-		distanceSensor->enable(TIME_STEP);
+		//distanceSensor = getDistanceSensor("ps1");
+		//distanceSensor->enable(TIME_STEP);
 		}
 
 	virtual ~MyRobot() { }
@@ -28,8 +31,10 @@ public:
 	{
 		while (step(TIME_STEP) != -1) 
 		{
-			double val = distanceSensor->getValue();
-			std::cout << val << std::endl;
+			//double val = distanceSensor->getValue();
+
+			std::cout << "Ahoj " << std::endl << robotIO << std::endl;
+			robotIO.setSpeed(100.0);
 		}
 	}
 };
