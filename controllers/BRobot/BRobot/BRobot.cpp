@@ -11,12 +11,12 @@ using namespace webots;
 class MyRobot : public Robot 
 {
 private:
-	//LED *led;
+	LED *led;
 	DistanceSensor *distanceSensor;
 
 public:
 	MyRobot() : Robot() {
-		//led = getLED("ledName");
+		led = getLED("ledName");
 		
 		distanceSensor = getDistanceSensor("ps1");
 		distanceSensor->enable(TIME_STEP);
