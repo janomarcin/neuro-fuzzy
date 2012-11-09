@@ -13,79 +13,76 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="NewFilter1">
-      <UniqueIdentifier>{baed6c9a-2616-475d-b5d6-5e197d8bbae7}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BRobot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Webots\projects\languages\cpp\src\Accelerometer.cpp">
-      <Filter>NewFilter1</Filter>
+    <ClCompile Include="..\Webots srv API\Accelerometer.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Webots\projects\languages\cpp\src\Camera.cpp">
-      <Filter>NewFilter1</Filter>
+    <ClCompile Include="..\Webots srv API\Camera.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Webots\projects\languages\cpp\src\Compass.cpp">
-      <Filter>NewFilter1</Filter>
+    <ClCompile Include="..\Webots srv API\Compass.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Webots\projects\languages\cpp\src\Connector.cpp">
-      <Filter>NewFilter1</Filter>
+    <ClCompile Include="..\Webots srv API\Connector.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Webots\projects\languages\cpp\src\Device.cpp">
-      <Filter>NewFilter1</Filter>
+    <ClCompile Include="..\Webots srv API\Device.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Webots\projects\languages\cpp\src\DifferentialWheels.cpp">
-      <Filter>NewFilter1</Filter>
+    <ClCompile Include="..\Webots srv API\DifferentialWheels.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Webots\projects\languages\cpp\src\Display.cpp">
-      <Filter>NewFilter1</Filter>
+    <ClCompile Include="..\Webots srv API\Display.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Webots\projects\languages\cpp\src\DistanceSensor.cpp">
-      <Filter>NewFilter1</Filter>
+    <ClCompile Include="..\Webots srv API\DistanceSensor.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Webots\projects\languages\cpp\src\Emitter.cpp">
-      <Filter>NewFilter1</Filter>
+    <ClCompile Include="..\Webots srv API\Emitter.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Webots\projects\languages\cpp\src\Field.cpp">
-      <Filter>NewFilter1</Filter>
+    <ClCompile Include="..\Webots srv API\Field.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Webots\projects\languages\cpp\src\GPS.cpp">
-      <Filter>NewFilter1</Filter>
+    <ClCompile Include="..\Webots srv API\GPS.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Webots\projects\languages\cpp\src\Gyro.cpp">
-      <Filter>NewFilter1</Filter>
+    <ClCompile Include="..\Webots srv API\Gyro.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Webots\projects\languages\cpp\src\LED.cpp">
-      <Filter>NewFilter1</Filter>
+    <ClCompile Include="..\Webots srv API\LED.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Webots\projects\languages\cpp\src\LightSensor.cpp">
-      <Filter>NewFilter1</Filter>
+    <ClCompile Include="..\Webots srv API\LightSensor.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Webots\projects\languages\cpp\src\Motion.cpp">
-      <Filter>NewFilter1</Filter>
+    <ClCompile Include="..\Webots srv API\Motion.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Webots\projects\languages\cpp\src\Node.cpp">
-      <Filter>NewFilter1</Filter>
+    <ClCompile Include="..\Webots srv API\Node.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Webots\projects\languages\cpp\src\Pen.cpp">
-      <Filter>NewFilter1</Filter>
+    <ClCompile Include="..\Webots srv API\Pen.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Webots\projects\languages\cpp\src\Receiver.cpp">
-      <Filter>NewFilter1</Filter>
+    <ClCompile Include="..\Webots srv API\Receiver.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Webots\projects\languages\cpp\src\Robot.cpp">
-      <Filter>NewFilter1</Filter>
+    <ClCompile Include="..\Webots srv API\Robot.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Webots\projects\languages\cpp\src\Servo.cpp">
-      <Filter>NewFilter1</Filter>
+    <ClCompile Include="..\Webots srv API\Servo.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Webots\projects\languages\cpp\src\Supervisor.cpp">
-      <Filter>NewFilter1</Filter>
+    <ClCompile Include="..\Webots srv API\Supervisor.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Webots\projects\languages\cpp\src\TouchSensor.cpp">
-      <Filter>NewFilter1</Filter>
+    <ClCompile Include="..\Webots srv API\TouchSensor.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
