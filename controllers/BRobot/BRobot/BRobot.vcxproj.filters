@@ -84,12 +84,12 @@
     <ClCompile Include="..\Webots srv API\TouchSensor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Anfis.cpp">
+    <ClCompile Include="RobotIO.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Anfis.h">
+    <ClInclude Include="RobotIO.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
