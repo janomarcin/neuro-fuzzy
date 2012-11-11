@@ -86,7 +86,11 @@
     <ClCompile Include="..\Webots srv API\Servo.cpp" />
     <ClCompile Include="..\Webots srv API\Supervisor.cpp" />
     <ClCompile Include="..\Webots srv API\TouchSensor.cpp" />
+    <ClCompile Include="Anfis.cpp" />
     <ClCompile Include="BRobot.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Anfis.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
