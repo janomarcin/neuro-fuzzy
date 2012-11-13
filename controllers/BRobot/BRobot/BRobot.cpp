@@ -1,9 +1,12 @@
 #include "MyRobot.h"
+#include <iostream>
+#include <fstream>
 
 int main(int argc, char **argv)
 {
-  MyRobot* controller = new MyRobot();
-  controller->run();
-  delete controller;
-  return 0;
+	MyRobot controller;
+	controller.loadFileData("anfis.config.txt");
+	controller.run();
+
+	return 0;
 }

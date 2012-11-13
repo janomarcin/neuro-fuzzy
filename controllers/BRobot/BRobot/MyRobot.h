@@ -4,19 +4,24 @@
 #include <webots/DistanceSensor.hpp>
 
 #include <iostream>
+#include <fstream>
 
 #include "RobotIO.h"
 
 class MyRobot : webots::Robot
 {
 private:
+	int numberOfInputs;
+	int numberOfLingvisticVariables;
+	std::vector<std::vector<int>> rules;
+
 	RobotIO robotIO;
-	double fileData;
-	std::vector<double> fileDatas;
+	std::vector<std::string> fileData;
 	static const int STEP = 32;
 public:
 	MyRobot();
 	virtual ~MyRobot();
+	void loadFileData(std::string fileName);
 
 public:
 	void run(); 
