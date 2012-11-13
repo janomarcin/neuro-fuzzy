@@ -39,7 +39,7 @@ std::ostream& operator<<(std::ostream &os, RobotIO &robot)
 	robot.getSensorData();
 	for(int i = 0; i < 8; i++)
 	{
-		os << robot.sensorData[i] << std::endl;
+		os << "Sensor " << i << ". Hodnota: " << robot.sensorData[i] << std::endl;
 	}
 	return os;
 }
