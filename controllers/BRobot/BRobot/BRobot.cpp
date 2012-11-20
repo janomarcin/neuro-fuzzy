@@ -5,7 +5,7 @@
 int main(int argc, char **argv)
 {
 	MyRobot controller;
-	controller.loadFileData("anfis.config.txt");
+	controller.loadFileData();
 	controller.run();
 
 	return 0;
