@@ -1,31 +1,29 @@
 #pragma once
 #include<stdio.h>
 #include<vector>
+#include "Individuum.h"
 
 using namespace std;
+
 class EvolutionaryAlgorithm
 {
 public:
-	EvolutionaryAlgorithm(void);
+	EvolutionaryAlgorithm(int length,int numberOfIndividuums);
 	~EvolutionaryAlgorithm(void);
 
-	int loadAnfisStructure(); //from file
 	void initPopulation(); //random init
-
-	void loadFitness(); //from File
-	
-	double getFitness(); //from file
-	void selection();
+	/*virtual*/ void fitness();
+	int selection();
 	void crossing();
 	void mutation();
 	void substitution(); 
-	void saveResultsToFile();
+
 
 private:
-	double fitness;
-	int genotypeLength;
-	int fitnessPosition;
-	vector<vector<double>> population;
-	vector<double> anfis; //0 - number of inputs, 1 - number of MF per input
+	
+	vector<Individuum *> population;
+	int individuumLength;
+	int numberOfIndividuums;
+
 };
 

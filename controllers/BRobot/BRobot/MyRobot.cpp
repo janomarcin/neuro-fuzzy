@@ -3,6 +3,11 @@
 
 MyRobot::MyRobot(void) : Robot()
 {
+	loadFileData();
+	std::vector<double> input;
+	input.push_back(56.8);
+	input.push_back(58.99);
+	anfis = new Anfis(numberOfInputs,numberOfLingvisticVariables,rules,Vrules1,Vrules2,input);
 }
 
 

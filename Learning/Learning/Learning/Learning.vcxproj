@@ -61,10 +61,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="EvolutionaryAlgorithm.cpp" />
+    <ClCompile Include="Individuum.cpp" />
     <ClCompile Include="SuperVisor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EvolutionaryAlgorithm.h" />
+    <ClInclude Include="Individuum.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

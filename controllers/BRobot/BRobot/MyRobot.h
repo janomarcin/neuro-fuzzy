@@ -8,6 +8,7 @@
 #include <vector>
 
 #include "RobotIO.h"
+#include "Anfis.h"
 
 class MyRobot : webots::Robot
 {
@@ -21,6 +22,8 @@ private:
 	RobotIO robotIO;
 	std::vector<std::string> fileData;
 	static const int STEP = 32;
+	Anfis* anfis;
+
 
 public:
 	MyRobot();
