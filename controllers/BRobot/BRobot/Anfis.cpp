@@ -1,7 +1,9 @@
+#include <cstdlib>
+
 #include "Anfis.h"
 
 
-Anfis::Anfis(int numberOfInputs, int numberOfLingvisticVariables,vector<vector<int>> rules,vector<vector<vector<double>>> MFsparameters,vector<vector<double>> adaptationFunctionParameters,vector<double> inputs)
+Anfis::Anfis(int numberOfInputs, int numberOfLingvisticVariables,vector< vector< int > > rules,vector< vector< vector< double > > > MFsparameters,vector< vector < double > > adaptationFunctionParameters,vector< double > inputs)
 {
 	//konfiguracia celeho anfisu - len raz
 	setNumberOfInputs(numberOfInputs);
@@ -20,9 +22,7 @@ Anfis::Anfis(int numberOfInputs, int numberOfLingvisticVariables,vector<vector<i
 double Anfis::getOutputValue()
 {
 	countLayerTwoOutput();
-	if (countLayerThreeOutput() == -1)
-		return -500;  //stop
-		
+	countLayerThreeOutput();
 	countLayerFourOutput();
 	return countOutputLayer();  //nedorobena normalizacia na - hodnota 0 hodnota + hodnota !!!!!!!!!
 }
@@ -43,18 +43,22 @@ void Anfis::countLayerFourOutput()
 
 	for(int i = 0; i < layerFourOutputs.size(); i++){
 		sum = 0;
-		for(int j = 1; j < layerFourOutputs.size(); j++){//menovatel zacina od 1 nie 0
+		for(int j = 1; j < numberAnfisInputs; j++){//menovatel zacina od 1 nie 0
 			sum = sum + adaptationFunctionValues[i][j] * inputValues[j];
 		}
 		if(sum == 0)
-			printf("suma je nulova!!!");
+		{
+			std::cout << "chyba pri vypocte adaptacnej funkcie, menovatel je nulovy!!!" << std::endl;
+			system("pause");
+			exit(1);
+		}
 
 		layerOutputNoWeight = (adaptationFunctionValues[i][0] * inputValues[0])/sum;
 		layerFourOutputs[i] = layerOutputNoWeight * layerThreeOutputs[i];
 	}
 }
 
-int Anfis::countLayerThreeOutput() 
+void Anfis::countLayerThreeOutput() 
 {// do normalization
 	layerThreeOutputs.resize(numberOfRules);
 
@@ -63,14 +67,15 @@ int Anfis::countLayerThreeOutput()
 		sum = sum + layerTwoOutputs[i];
 	}
 	if (sum == 0)
-		return -1; //nemozme delit nulou
+	{
+		std::cout << "nemozem urobit normalizaciu, menovatel je nulovy!!!" << std::endl;
+		system("pause");
+		exit(1);
+	}
 
 	for(int i = 0; i < layerThreeOutputs.size(); i++){
 		layerThreeOutputs[i] = layerTwoOutputs[i]/sum;
 	}
-
-	return 0;
-
 }
 
 void Anfis::countLayerTwoOutput()
@@ -102,9 +107,9 @@ void Anfis::countLayerTwoOutput()
 	}
 }
 
-void Anfis::setRules(vector<vector<int>> rules)
+void Anfis::setRules(vector< vector < int > > ruless)
 {
-	this->rules = rules;
+	rules = ruless;
 }
 
 void Anfis::setNumberOfRules()
@@ -146,7 +151,7 @@ double Anfis::getDegreeMF(double x1, double x2, double x)
 		return 0;
 }
 
-void Anfis::setAdaptationFunctionValues(vector<vector<double>> adaptation)
+void Anfis::setAdaptationFunctionValues(vector< vector < double > > adaptation)
 {
 	adaptationFunctionValues = adaptation;
 }
@@ -161,13 +166,13 @@ void Anfis::setLingvisticVariablesValues()
 
 		for(j = 0; j < numberLingvisticVariables; j++){
 			lingvisticVariablesValues[i][j].resize(2);
-			lingvisticVariablesValues[i][j][0] = rand(); //nastavenie random pre sklon
-			lingvisticVariablesValues[i][j][1] = rand();
+			lingvisticVariablesValues[i][j][0] = std::rand(); //nastavenie random pre sklon
+			lingvisticVariablesValues[i][j][1] = std::rand();
 		}
 	}
 }
 
-void Anfis::setLingvisticVariablesValues(vector<vector<vector<double>>> values)
+void Anfis::setLingvisticVariablesValues(vector< vector < vector < double > > > values)
 {
 	lingvisticVariablesValues = values;
 }

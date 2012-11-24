@@ -1,30 +1,5 @@
-﻿Build started 11/22/2012 10:22:38 AM.
-     1>Project "D:\Programming\projectFuzzy\neuro-fuzzy\controllers\BRobot\BRobot\BRobot.vcxproj" on node 2 (build target(s)).
-     1>InitializeBuildStatus:
-         Touching "Debug\BRobot.unsuccessfulbuild".
-       ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Webots\include\controller\c" /I"C:\Program Files (x86)\Webots\include\controller\cpp" /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt BRobot.cpp MyRobot.cpp
-         MyRobot.cpp
-     1>d:\programming\projectfuzzy\neuro-fuzzy\controllers\brobot\brobot\myrobot.cpp(10): error C2664: 'Anfis::Anfis(int,int,std::vector<_Ty>,std::vector<std::vector<std::vector<double>>>,std::vector<std::vector<double>>,std::vector<double>)' : cannot convert parameter 4 from 'std::vector<_Ty>' to 'std::vector<_Ty>'
-                 with
-                 [
-                     _Ty=std::vector<int>
-                 ]
-                 and
-                 [
-                     _Ty=std::vector<double>
-                 ]
-                 and
-                 [
-                     _Ty=std::vector<std::vector<double>>
-                 ]
-                 No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
-         Generating Code...
-         Compiling...
-         BRobot.cpp
-         Generating Code...
-     1>Done Building Project "D:\Programming\projectFuzzy\neuro-fuzzy\controllers\BRobot\BRobot\BRobot.vcxproj" (build target(s)) -- FAILED.
+﻿Build started 11/24/2012 10:59:24 AM.
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:01.77
+Time Elapsed 00:00:00.01
