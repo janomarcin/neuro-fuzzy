@@ -6,8 +6,13 @@
 int main(int argc, char **argv)
 {
 	printf("Testing text");
-	EvolutionaryAlgorithm* evolution = new EvolutionaryAlgorithm(8);
+	EvolutionaryAlgorithm* evolution = new EvolutionaryAlgorithm(8,10);
+	evolution->initPopulation();
+	//evolution->crossing();
+	//evolution->mutation();
+	evolution->substitution();
 	system("pause");
+	
 
 	return 0;
 }

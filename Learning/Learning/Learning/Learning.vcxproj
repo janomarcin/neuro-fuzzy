@@ -60,11 +60,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CompareIndividuum.cpp" />
     <ClCompile Include="EvolutionaryAlgorithm.cpp" />
     <ClCompile Include="Individuum.cpp" />
     <ClCompile Include="SuperVisor.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CompareIndividuum.h" />
     <ClInclude Include="EvolutionaryAlgorithm.h" />
     <ClInclude Include="Individuum.h" />
   </ItemGroup>
