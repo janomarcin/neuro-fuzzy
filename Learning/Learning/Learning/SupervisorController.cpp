@@ -34,8 +34,8 @@ void SupervisorController::run(vector<Individuum*> &population){
     WbDeviceTag emitter = wb_robot_get_device("emitter");
 	// find robot node and get robot translation + robot rotation
 	WbNodeRef robot_node = wb_supervisor_node_get_from_def("MY_ROBOT");
-	WbFieldRef robot_translation = wb_supervisor_node_get_field(robot_node, "translation");
-	WbFieldRef robot_rotation = wb_supervisor_node_get_field(robot_node, "rotation");
+	robot_translation = wb_supervisor_node_get_field(robot_node, "translation");
+	robot_rotation = wb_supervisor_node_get_field(robot_node, "rotation");
 	// run behaviors
 	for (int i = 0; i < numberOfIndividuums; i++) {
 		// send genotype to robot for evaluation
