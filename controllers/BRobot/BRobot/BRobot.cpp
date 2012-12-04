@@ -12,6 +12,8 @@ int main(int argc, char **argv)
 		{
 				rules[i].resize(3);
 		}
+		//subor
+
 		rules[0][0] =0;
 		rules[0][1] =0;
 		rules[0][2] =0;
@@ -53,7 +55,7 @@ int main(int argc, char **argv)
 						mfparameter[i][j].resize(2);			
 				}
 		}
-
+		//receiver
 		mfparameter[0][0][0] = -3;
 		mfparameter[0][0][1] = 3;
 
@@ -73,7 +75,7 @@ int main(int argc, char **argv)
 		{
 				adaptation[i].resize(2);	
 		}
-
+		//receiver
 		adaptation[0][0] =1;
 		adaptation[0][1] =2; //2
 
