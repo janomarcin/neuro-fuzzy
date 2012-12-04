@@ -14,8 +14,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.988326 -0.0360179 -0.148034 3.77704
-  position 0.490563 0.588953 -0.340469
+  orientation -0.46264 -0.27344 -0.843324 2.87175
+  position 0.75293 0.44995 0.424103
 }
 Background {
   skyColor [
@@ -55,11 +55,20 @@ DEF FLOOR Solid {
   }
 }
 DEF MY_ROBOT EPuck {
-  translation -0.353603 -3.24231e-005 -0.263634
-  rotation -0.00859836 0.999963 -0.000784367 -0.181129
+  translation 0.157385 -3.18669e-005 0.0221757
+  rotation -0.00118151 0.999998 -0.00138116 -1.72667
+  display_windowPosition 0.65122 0.242489
 }
 Supervisor {
-  controller "Supervisor"
+  children [
+    Receiver {
+      channel 2
+    }
+    Emitter {
+      channel 1
+    }
+  ]
+  controller "Learning"
 }
 DEF BALL Solid {
   translation 0.0172757 0.0495891 -0.407276
@@ -123,7 +132,7 @@ DEF WALL_4 Solid {
   boundingObject USE WALL_SHAPE
 }
 DEF DUMBBELL Solid {
-  translation 0.2 0.0292152 -0.0999933
+  translation 0.2 0.0292152 -0.0999931
   rotation 1 0 0 1.57707
   children [
     DEF G0 Group {

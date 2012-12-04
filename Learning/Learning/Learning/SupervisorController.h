@@ -2,10 +2,11 @@
 #include <webots/robot.h>
 #include <webots/supervisor.h>
 #include <webots/emitter.h>
+#include <webots/receiver.h>
 #include "Individuum.h"
 #include <string.h>
 #include <vector>
-
+#include <assert.h>
 using namespace std;
 
 class SupervisorController {

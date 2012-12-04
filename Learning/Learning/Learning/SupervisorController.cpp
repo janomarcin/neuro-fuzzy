@@ -32,19 +32,27 @@ void SupervisorController::run(vector<Individuum*> &population){
 	time_step = wb_robot_get_basic_time_step();
 	// the emitter to send genotype to robot
     WbDeviceTag emitter = wb_robot_get_device("emitter");
+	WbDeviceTag receiver = wb_robot_get_device("receiver");
 	// find robot node and get robot translation + robot rotation
 	WbNodeRef robot_node = wb_supervisor_node_get_from_def("MY_ROBOT");
 	robot_translation = wb_supervisor_node_get_field(robot_node, "translation");
 	robot_rotation = wb_supervisor_node_get_field(robot_node, "rotation");
 	// run behaviors
 	for (int i = 0; i < numberOfIndividuums; i++) {
+		
 		// send genotype to robot for evaluation
-		//wb_emitter_send(emitter, genotype, individuumLength * sizeof(double));
+		const vector<double> genotype[] = {population[i]->getIndividuum()};
+		wb_emitter_send(emitter, genotype, individuumLength * sizeof(double));
+		wb_receiver_enable(receiver, time_step);
+		
 		// reset robot to initial position
 		wb_supervisor_field_set_sf_vec3f(robot_translation, INITIAL_TRANS);
 		wb_supervisor_field_set_sf_rotation(robot_rotation, INITIAL_ROT);
 		
 		run_seconds(10);
+		//double fitness[1]; 
+		//assert(wb_receiver_get_data_size(receiver) == sizeof(double));
+		//memcpy(fitness, wb_receiver_get_data(receiver), sizeof(double));
 		printf("individuum: %d\n", i);
 	}
 }
