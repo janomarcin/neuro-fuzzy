@@ -14,7 +14,7 @@ public:
 	
 	void setInputValues(vector< double > inputs);
 	void setLingvisticVariablesValues(vector< vector < vector < double > > > values);
-	void setLingvisticVariablesValues(); //random
+	//void setLingvisticVariablesValues(); //random
 	void setAdaptationFunctionValues(vector< vector < double > > adaptation);
 	double getOutputValue();
 	
