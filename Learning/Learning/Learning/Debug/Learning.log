@@ -1,5 +1,9 @@
-﻿Build started 11/29/2012 11:11:57 PM.
+﻿Build started 12/4/2012 3:27:57 PM.
+     1>Project "C:\Users\Pepo\Desktop\repozitar\neuro-fuzzy\Learning\Learning\Learning\Learning.vcxproj" on node 2 (clean target(s)).
+     1>_PrepareForClean:
+         Deleting file "Debug\Learning.lastbuildstate".
+     1>Done Building Project "C:\Users\Pepo\Desktop\repozitar\neuro-fuzzy\Learning\Learning\Learning\Learning.vcxproj" (clean target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.01
+Time Elapsed 00:00:00.09

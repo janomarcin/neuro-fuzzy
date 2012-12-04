@@ -2,12 +2,26 @@
 #include <iostream>
 #include <fstream>
 #include "EvolutionaryAlgorithm.h"
+#include "SupervisorController.h"
 
+
+
+
+using namespace std;
 int main(int argc, char **argv)
 {
+	double init_trans[] = {0, 0 ,0};
+	double init_rot[] = {0, 0, 0, 0}; 
 	printf("Testing text");
-	EvolutionaryAlgorithm* evolution = new EvolutionaryAlgorithm(8,10);
+	EvolutionaryAlgorithm* evolution = new EvolutionaryAlgorithm(8, 10);
+	SupervisorController* controller = new SupervisorController(8, 10);
+	controller->init(init_trans, init_rot);
+	
 	evolution->initPopulation();
+	
+	controller->run(evolution->population);
+	//evolution->setFitness(controller->getFitness()));
+
 	//evolution->crossing();
 	//evolution->mutation();
 	evolution->substitution();

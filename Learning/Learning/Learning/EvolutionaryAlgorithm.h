@@ -26,11 +26,11 @@ public:
 	void crossing();
 	void mutation();
 	void substitution(); 
-
+	vector<Individuum *> population;
 
 private:
 	
-	vector<Individuum *> population;
+
 	int individuumLength;
 	int numberOfIndividuums;
 

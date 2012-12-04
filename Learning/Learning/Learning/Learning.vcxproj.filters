@@ -27,6 +27,9 @@
     <ClCompile Include="CompareIndividuum.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SupervisorController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EvolutionaryAlgorithm.h">
@@ -36,6 +39,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CompareIndividuum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SupervisorController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
