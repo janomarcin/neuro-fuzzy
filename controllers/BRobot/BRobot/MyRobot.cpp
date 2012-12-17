@@ -1,11 +1,12 @@
 #include "MyRobot.h"
 
 
-MyRobot::MyRobot(void) : Robot()
+MyRobot::MyRobot(void) : Supervisor()
 {
-	loadFileData();
-
-		
+	//loadFileData();
+	rootNode = Supervisor::getRoot();
+	robotNode = Supervisor::getFromDef("GA");
+	field = robotNode->getField("translation");
 }
 
 
@@ -15,11 +16,27 @@ MyRobot::~MyRobot(void)
 
 void MyRobot::run() 
 {
-	
-	while (step(STEP) != -1) 
-	{
-	}
-		
+	//const double *position = field->getSFVec3f();
+	//std::cout << "X = " << position[0] << " Y = " << position[1] << " Z = " << position[2] << std::endl; 
+
+		//std::cout << rootNode->getTypeName() << std::endl;
+		//std::cout << robotNode->getTypeName() << std::endl;
+		//std::cout << robotNode->getPosition() << std::endl;
+		//robotNode->getField("Translation");
+
+		for (double t = 0.0; t < 14400.0; t+= STEP) 
+		{
+				robotIO.setSpeed(3.0);
+				step(STEP);
+		}
+
+		const double *pos = field->getSFVec3f();
+		double dist = sqrt(pos[0] * pos[0] + pos[2] * pos[2]);
+
+		std::cout <<"dist = " << dist << std::endl;
+		const double INITIAL[3] = { 0, 0.5, 0 };
+		field->setSFVec3f(INITIAL);
+		Supervisor::simulationRevert();
 }
 
 void MyRobot::loadFileData()

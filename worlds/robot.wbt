@@ -1,0 +1,131 @@
+#VRML_SIM V6.0 utf8
+WorldInfo {
+  info [
+    "Description"
+    "Author: first name last name <e-mail>"
+    "Date: DD MMM YYYY"
+  ]
+}
+Viewpoint {
+  orientation -0.0401015 0.967018 0.25153 2.94981
+  position 0.172774 0.640767 -1.28376
+}
+Background {
+  skyColor [
+    0.4 0.7 1
+  ]
+}
+PointLight {
+  location 0 0.345 0
+}
+DEF FLOOR CheckeredFloor {
+}
+DEF GA Supervisor {
+  translation 1.3087e-05 0.0397209 -1.60952e-05
+  rotation 0.7759 2.70662e-05 0.630856 -0.000518588
+  children [
+    DEF WHEEL4 Servo {
+      rotation 1 0 0 0
+      children [
+        DEF WHEEL Transform {
+          translation -0.06 0 -0.05
+          rotation 0 0 1 1.5708
+          children [
+            Shape {
+              geometry Cylinder {
+                height 0.02
+                radius 0.04
+              }
+            }
+          ]
+        }
+      ]
+      name "wheel4"
+      boundingObject USE WHEEL
+      physics DEF WHEEL_PH Physics {
+      }
+      position 5.10134e-07
+    }
+    DEF WHEEL3 Servo {
+      rotation 1 0 0 0
+      children [
+        DEF WHEEL Transform {
+          translation -0.06 0 0.05
+          rotation 0 0 1 1.5708
+          children [
+            Shape {
+              geometry Cylinder {
+                height 0.02
+                radius 0.04
+              }
+            }
+          ]
+        }
+      ]
+      name "wheel3"
+      boundingObject USE WHEEL
+      physics DEF WHEEL_PH Physics {
+      }
+      position -4.36988e-07
+    }
+    DEF WHEEL2 Servo {
+      rotation 1 0 0 0
+      children [
+        DEF WHEEL Transform {
+          translation 0.06 0 0.05
+          rotation 0 0 1 1.5708
+          children [
+            Shape {
+              geometry Cylinder {
+                height 0.02
+                radius 0.04
+              }
+            }
+          ]
+        }
+      ]
+      name "wheel2"
+      boundingObject USE WHEEL
+      physics DEF WHEEL_PH Physics {
+      }
+      position -5.09262e-07
+    }
+    DEF WHEEL1 Servo {
+      rotation 1 0 0 0
+      children [
+        DEF WHEEL Transform {
+          translation 0.06 0 -0.05
+          rotation 0 0 1 1.5708
+          children [
+            Shape {
+              geometry Cylinder {
+                height 0.02
+                radius 0.04
+              }
+            }
+          ]
+        }
+      ]
+      name "wheel1"
+      boundingObject USE WHEEL
+      physics DEF WHEEL_PH Physics {
+        centerOfMass 0.06 0 -0.05
+      }
+      position 4.36988e-07
+    }
+    DEF BODY Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 0 0
+        }
+      }
+      geometry Box {
+        size 0.1 0.05 0.2
+      }
+    }
+  ]
+  boundingObject USE BODY
+  physics Physics {
+  }
+  controller "BRobot"
+}

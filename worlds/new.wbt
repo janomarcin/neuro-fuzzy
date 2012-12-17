@@ -7,8 +7,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.996619 -0.0328366 -0.0753171 5.14051
-  position -0.0493484 1.03333 0.581075
+  orientation -0.465132 0.697111 0.545608 2.12136
+  position 0.180626 0.758151 -0.245632
 }
 Background {
   skyColor [
@@ -20,6 +20,112 @@ PointLight {
 }
 DEF FLOOR CheckeredFloor {
 }
-EPuck {
+DEF GA Supervisor {
+  translation 7.85441e-06 0.0397209 0.000105501
+  rotation 0.74007 0.290667 0.606473 -0.00108356
+  children [
+    DEF WHEEL4 Servo {
+      translation -0.06 0 -0.05
+      rotation 1 0 0 1e-06
+      children [
+        DEF WHEEL Transform {
+          rotation 0 0 1 1.5708
+          children [
+            Shape {
+              geometry Cylinder {
+                height 0.02
+                radius 0.04
+              }
+            }
+          ]
+        }
+      ]
+      name "wheel4"
+      boundingObject USE WHEEL
+      physics DEF WHEEL_PH Physics {
+      }
+      position 6.67732e-07
+    }
+    DEF WHEEL3 Servo {
+      translation -0.06 0 0.05
+      rotation 1 0 0 0
+      children [
+        DEF WHEEL Transform {
+          rotation 0 0 1 1.5708
+          children [
+            Shape {
+              geometry Cylinder {
+                height 0.02
+                radius 0.04
+              }
+            }
+          ]
+        }
+      ]
+      name "wheel3"
+      boundingObject USE WHEEL
+      physics DEF WHEEL_PH Physics {
+      }
+      position 2.02129e-07
+    }
+    DEF WHEEL2 Servo {
+      translation 0.06 0 0.05
+      rotation 1 0 0 1e-06
+      children [
+        DEF WHEEL Transform {
+          rotation 0 0 1 1.5708
+          children [
+            Shape {
+              geometry Cylinder {
+                height 0.02
+                radius 0.04
+              }
+            }
+          ]
+        }
+      ]
+      name "wheel2"
+      boundingObject USE WHEEL
+      physics DEF WHEEL_PH Physics {
+      }
+      position 1.97074e-07
+    }
+    DEF WHEEL1 Servo {
+      translation 0.06 0 -0.05
+      rotation 1 -8.33374e-06 1.05675e-05 9.21417
+      children [
+        DEF WHEEL Transform {
+          rotation 0 0 1 1.5708
+          children [
+            Shape {
+              geometry Cylinder {
+                height 0.02
+                radius 0.04
+              }
+            }
+          ]
+        }
+      ]
+      name "wheel1"
+      boundingObject USE WHEEL
+      physics DEF WHEEL_PH Physics {
+        centerOfMass 0.06 0 -0.05
+      }
+      position 16.0768
+    }
+    DEF BODY Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 0 0
+        }
+      }
+      geometry Box {
+        size 0.1 0.05 0.2
+      }
+    }
+  ]
+  boundingObject USE BODY
+  physics Physics {
+  }
   controller "BRobot"
 }
