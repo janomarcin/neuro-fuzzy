@@ -17,6 +17,8 @@ using namespace std;
 class EvolutionaryAlgorithm
 {
 public:
+
+	//minimization
 	EvolutionaryAlgorithm(int length,int numberOfIndividuums);
 	~EvolutionaryAlgorithm(void);
 
@@ -25,15 +27,12 @@ public:
 	int selection();
 	void crossing();
 	void mutation();
-	void substitution(); 
+	void substitution();
 	vector<Individuum *> population;
 
 private:
-	
-
 	int individuumLength;
 	int numberOfIndividuums;
-
 	bool compareIndividuums(const Individuum * ind1, const Individuum * ind2);
 	
 

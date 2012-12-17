@@ -1,8 +1,9 @@
 #include "EvolutionaryAlgorithm.h"
+#define RANDOM_VALUE  2*((double)rand()/(double)RAND_MAX) - 1 //<-1;1>
 
-const int tournament = 2;
-const float mutationValue = 0.1;
-const float mutationPowerValue = 0.3;
+const int tournament = 3;
+const float mutationValue = 0.3;
+const float mutationPowerValue = 0.4;
 
 EvolutionaryAlgorithm::EvolutionaryAlgorithm(int length,int numberOfIndividuums)
 {
@@ -20,23 +21,33 @@ void EvolutionaryAlgorithm::crossing()
 	vector<double> parent1;
 	vector<double> parent2;
 
-	Individuum* descendant1 = new Individuum(population[0]->getLength());
-	Individuum* descendant2 = new Individuum(population[0]->getLength());
 	vector<double> descendantGenes1;
 	vector<double> descendantGenes2;
 
-	
 	for(int i = 0; i < (int) numberOfIndividuums/2; i++){
 
-		
-		parent1 = population[selection()]->getIndividuum();
-		parent2 = population[selection()]->getIndividuum();
+		int sel1,sel2;
+
+		Individuum* descendant1 = new Individuum(population[0]->getLength());
+		Individuum* descendant2 = new Individuum(population[0]->getLength());
+		descendant1->setFitness(99999);
+		descendant2->setFitness(99999);
+
+		sel1 = selection();
+		sel2 = selection();
+		while (sel2 == sel1){
+			//std::cout << "selected identical" <<std::endl;
+			sel2 = selection();
+		}
+
+		parent1 = population[sel1]->getIndividuum();
+		parent2 = population[sel2]->getIndividuum();
 		descendantGenes1.resize(parent1.size());
 		descendantGenes2.resize(parent2.size());
 
 		for(int j = 0; j < parent1.size(); j++){
 			descendantGenes1[j] = 0.5*parent1[j]+0.5*parent2[j];
-			descendantGenes2[j] = 1.5*parent1[j]-0.5*parent2[j];
+			descendantGenes2[j] = 0.7*parent1[j]+0.3*parent2[j];
 		}
 		descendant1->setIndividuum(descendantGenes1);
 		descendant2->setIndividuum(descendantGenes2);
@@ -48,8 +59,8 @@ void EvolutionaryAlgorithm::crossing()
 void EvolutionaryAlgorithm::substitution(){
 
 	std::sort(population.begin(),population.end(),CompareIndividuum());
+	population.erase(population.begin() + numberOfIndividuums,population.end());
 }
-
 
 void EvolutionaryAlgorithm::mutation(){
 	vector<double> values;
@@ -60,7 +71,7 @@ void EvolutionaryAlgorithm::mutation(){
 
 			for(int j = 0; j < population[i]->getLength(); j++){
 				if(((double)rand()/(double)RAND_MAX) < mutationPowerValue){
-					values[j] = rand(); //new value
+					values[j] = RANDOM_VALUE; //new value
 				}
 			}
 			population[i]->setIndividuum(values);
@@ -70,14 +81,20 @@ void EvolutionaryAlgorithm::mutation(){
 
 int EvolutionaryAlgorithm::selection(){ //vrati index jedinca
 
-	//selection of max fitness individuum
+	//selection of min fitness individuum
 
-	int winner;
-	vector<int> selParents;
+	int winner,newIndex;
+	vector<int> selParents, indexes;
 	selParents.resize(tournament);
+
+	for(int i = 0; i < numberOfIndividuums; i++){
+		indexes.push_back(i);
+	}
     
     for(int i = 0; i < tournament; i++){
-            selParents[i]= rand() % numberOfIndividuums;           
+		newIndex = rand() % indexes.size(); 
+	    selParents[i] = indexes[newIndex];
+		indexes.erase(indexes.begin()+newIndex);
     }
 
     winner = selParents[0];
@@ -88,7 +105,6 @@ int EvolutionaryAlgorithm::selection(){ //vrati index jedinca
     return winner; 
 }
 
-
 void EvolutionaryAlgorithm::initPopulation()
 {
 	vector<double> jedinec;
@@ -98,15 +114,13 @@ void EvolutionaryAlgorithm::initPopulation()
 	for(int i = 0; i < numberOfIndividuums; i++){
 
 		for(int j = 0; j < individuumLength; j++){
-			jedinec[j] = (double)rand()/(double)RAND_MAX;
+			jedinec[j] = RANDOM_VALUE;
 		}
 
 		population[i]->setIndividuum(jedinec);
-		population[i]->setFitness(rand());
+		population[i]->setFitness(999999);
 	}
 }
-
-
 
 EvolutionaryAlgorithm::~EvolutionaryAlgorithm(void)
 {
