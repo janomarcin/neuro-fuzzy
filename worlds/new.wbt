@@ -7,8 +7,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.465132 0.697111 0.545608 2.12136
-  position 0.180626 0.758151 -0.245632
+  orientation -0.416179 -0.808095 -0.416867 1.71244
+  position -0.731097 0.9994 0.170483
 }
 Background {
   skyColor [
@@ -20,10 +20,52 @@ PointLight {
 }
 DEF FLOOR CheckeredFloor {
 }
+WoodBox {
+  translation 0 0.05 0.4
+  boxSize 0.1 0.1 0.1
+}
 DEF GA Supervisor {
-  translation 7.85441e-06 0.0397209 0.000105501
-  rotation 0.74007 0.290667 0.606473 -0.00108356
+  translation -5.12329e-05 0.0395211 0.000321817
+  rotation 0.987501 -0.000752661 0.157613 0.00812603
   children [
+    DEF SENSOR2 DistanceSensor {
+      translation -0.03 0 0.1
+      rotation 0 1 0 -1.5708
+      children [
+        DEF BODY Shape {
+          geometry Box {
+            size 0.02 0.02 0.02
+          }
+        }
+      ]
+      name "sensor2"
+      physics DEF SENSOR_PH Physics {
+      }
+      lookupTable [
+        0 0 0
+        0.2 3 0
+      ]
+    }
+    DEF SENSOR1 DistanceSensor {
+      translation 0.03 0 0.1
+      rotation 0 1 0 -1.4399
+      children [
+        DEF BODY Shape {
+          geometry Box {
+            size 0.02 0.02 0.02
+          }
+        }
+      ]
+      name "sensor1"
+      boundingObject USE BODY
+      physics DEF WHEEL_PH Physics {
+      }
+      lookupTable [
+        0 0 0
+        0.2 3 0
+      ]
+      type "laser"
+    }
     DEF WHEEL4 Servo {
       translation -0.06 0 -0.05
       rotation 1 0 0 1e-06
@@ -44,7 +86,7 @@ DEF GA Supervisor {
       boundingObject USE WHEEL
       physics DEF WHEEL_PH Physics {
       }
-      position 6.67732e-07
+      position 86.8503
     }
     DEF WHEEL3 Servo {
       translation -0.06 0 0.05
@@ -66,7 +108,7 @@ DEF GA Supervisor {
       boundingObject USE WHEEL
       physics DEF WHEEL_PH Physics {
       }
-      position 2.02129e-07
+      position 86.8503
     }
     DEF WHEEL2 Servo {
       translation 0.06 0 0.05
@@ -88,7 +130,7 @@ DEF GA Supervisor {
       boundingObject USE WHEEL
       physics DEF WHEEL_PH Physics {
       }
-      position 1.97074e-07
+      position 89.357
     }
     DEF WHEEL1 Servo {
       translation 0.06 0 -0.05
@@ -111,7 +153,7 @@ DEF GA Supervisor {
       physics DEF WHEEL_PH Physics {
         centerOfMass 0.06 0 -0.05
       }
-      position 16.0768
+      position 105.434
     }
     DEF BODY Shape {
       appearance Appearance {

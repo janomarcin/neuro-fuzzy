@@ -21,6 +21,9 @@ private:
 	std::vector<std::vector<int> > rules;
 	std::vector<std::vector<double> > Vrules1;
 	std::vector<std::vector<double> > Vrules2;
+	std::vector<std::vector<std::vector<double> > > mfparameter;
+	std::vector<std::vector<double > > adaptation;
+	vector<double> input;
 
 	RobotIO robotIO;
 	webots::Node *rootNode;

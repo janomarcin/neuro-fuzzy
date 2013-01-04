@@ -13,8 +13,10 @@
 class RobotIO : webots::Robot
 {
 private:
-	static const int STEP = 32;
+	static const int STEP = 24;
 	webots::Servo *wheel[4];
+	webots::DistanceSensor *distanceSensor[2];
+
 public:
 	RobotIO(void);
 	~RobotIO(void);

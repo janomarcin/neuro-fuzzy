@@ -6,6 +6,9 @@ RobotIO::RobotIO(void) : Robot ()
 	wheel[1] = Robot::getServo("wheel2");
 	wheel[2] = Robot::getServo("wheel3");
 	wheel[3] = Robot::getServo("wheel4");
+	distanceSensor[0] = Robot::getDistanceSensor("sensor1");
+	distanceSensor[1] = Robot::getDistanceSensor("sensor2");
+	//distanceSensor[2] = Robot::getDistanceSensor("sensor3");
 }
 
 
@@ -15,17 +18,46 @@ RobotIO::~RobotIO(void)
 
 void RobotIO::getSensorData(std::vector<double> &sensorData)
 {
+	distanceSensor[0]->enable(STEP);
+	distanceSensor[1]->enable(STEP);
+	//distanceSensor[2]->enable(STEP);
 
+	for(int i = 0; i < 2; i++)
+	{
+		sensorData.push_back(distanceSensor[i]->getValue());
+	}
 }
 
 void RobotIO::setSpeed(double value)
 {
-	wheel[0]->setPosition(9999999999999999999999999999999.0);
-	wheel[0]->setVelocity(1.5);
-	wheel[1]->setPosition(9999999999999999999999999999999.0);
-	wheel[1]->setVelocity(1.5);
-	wheel[2]->setPosition(9999999999999999999999999999999.0);
-	wheel[2]->setVelocity(1.5);
-	wheel[3]->setPosition(9999999999999999999999999999999.0);
-	wheel[3]->setVelocity(1.5);
+		wheel[0]->setPosition(9999999999999999999999999999999.0);
+		wheel[0]->setVelocity(value);
+		wheel[1]->setPosition(9999999999999999999999999999999.0);
+		wheel[1]->setVelocity(value);
+		wheel[2]->setPosition(9999999999999999999999999999999.0);
+		wheel[2]->setVelocity(value);
+		wheel[3]->setPosition(9999999999999999999999999999999.0);
+		wheel[3]->setVelocity(value);
+	/*if(value > 0)
+	{
+		wheel[0]->setPosition(9999999999999999999999999999999.0);
+		wheel[0]->setVelocity(value);
+		wheel[1]->setPosition(9999999999999999999999999999999.0);
+		wheel[1]->setVelocity(value);
+		wheel[2]->setPosition(9999999999999999999999999999999.0);
+		wheel[2]->setVelocity(0.2);
+		wheel[3]->setPosition(9999999999999999999999999999999.0);
+		wheel[3]->setVelocity(0.2);
+	}
+	else
+	{
+		wheel[0]->setPosition(9999999999999999999999999999999.0);
+		wheel[0]->setVelocity(0.2);
+		wheel[1]->setPosition(9999999999999999999999999999999.0);
+		wheel[1]->setVelocity(0.2);
+		wheel[2]->setPosition(9999999999999999999999999999999.0);
+		wheel[2]->setVelocity(abs(value));
+		wheel[3]->setPosition(9999999999999999999999999999999.0);
+		wheel[3]->setVelocity(abs(value));
+	}*/
 }
