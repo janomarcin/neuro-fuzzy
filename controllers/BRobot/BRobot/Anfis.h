@@ -9,7 +9,7 @@ using namespace std;
 class Anfis
 {
 public:
-	Anfis(int numberOfInputs, int numberOfLingvisticVariables,vector< vector< int > > rules,vector< vector< vector< double > > > MFsparameters,vector< vector < double > > adaptationFunctionParameters,vector< double > inputs);
+	Anfis(int numberOfInputs, int numberOfLingvisticVariables,vector< vector< int > > &rules,vector< vector< vector< double > > > &MFsparameters,vector< vector < double > > &adaptationFunctionParameters,vector< double > &inputs);
 	~Anfis(void);
 	
 	void setInputValues(vector< double > inputs);

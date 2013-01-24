@@ -13,7 +13,7 @@
 class RobotIO : webots::Robot
 {
 private:
-	static const int STEP = 24;
+	static const int STEP = 1000;
 	webots::Servo *wheel[4];
 	webots::DistanceSensor *distanceSensor[2];
 
@@ -23,6 +23,6 @@ public:
 
 public:
 	void getSensorData(std::vector<double> &sensorData);
-	void setSpeed(double value);
+	void setSpeed(double value, double side);
 };
 

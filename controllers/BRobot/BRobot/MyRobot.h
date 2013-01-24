@@ -9,21 +9,26 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <cstring>
 
 #include "RobotIO.h"
 #include "Anfis.h"
+#include "EvolutionaryAlgorithm.h"
 
 class MyRobot : webots::Supervisor
 {
 private:
 	int numberOfInputs;
 	int numberOfLingvisticVariables;
+	EvolutionaryAlgorithm *evolutionaryAlgorithm;
 	std::vector<std::vector<int> > rules;
 	std::vector<std::vector<double> > Vrules1;
 	std::vector<std::vector<double> > Vrules2;
 	std::vector<std::vector<std::vector<double> > > mfparameter;
 	std::vector<std::vector<double > > adaptation;
 	vector<double> input;
+	double speed;
+	double side;
 
 	RobotIO robotIO;
 	webots::Node *rootNode;
@@ -31,7 +36,7 @@ private:
 	webots::Field *field;
 
 	std::vector<std::string> fileData;
-	static const int STEP = 25;
+	static const int STEP = 1000;
 	Anfis* anfis;
 
 

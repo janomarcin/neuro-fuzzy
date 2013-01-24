@@ -4,13 +4,10 @@
 Individuum::Individuum(int length)
 {
 	individuum.resize(length);
+	this->length = length;
 	fitness = 0;
 }
 
-void Individuum::setLength(int value)
-{
-	length = value;
-}
 
 int Individuum::getLength()
 {

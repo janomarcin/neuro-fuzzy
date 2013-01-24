@@ -28,36 +28,41 @@ void RobotIO::getSensorData(std::vector<double> &sensorData)
 	}
 }
 
-void RobotIO::setSpeed(double value)
+void RobotIO::setSpeed(double speed, double side)
 {
-		wheel[0]->setPosition(9999999999999999999999999999999.0);
-		wheel[0]->setVelocity(value);
-		wheel[1]->setPosition(9999999999999999999999999999999.0);
-		wheel[1]->setVelocity(value);
-		wheel[2]->setPosition(9999999999999999999999999999999.0);
-		wheel[2]->setVelocity(value);
-		wheel[3]->setPosition(9999999999999999999999999999999.0);
-		wheel[3]->setVelocity(value);
-	/*if(value > 0)
+	if(speed > 0)
 	{
 		wheel[0]->setPosition(9999999999999999999999999999999.0);
-		wheel[0]->setVelocity(value);
+		wheel[0]->setVelocity(speed);
 		wheel[1]->setPosition(9999999999999999999999999999999.0);
-		wheel[1]->setVelocity(value);
+		wheel[1]->setVelocity(speed);
+		wheel[2]->setPosition(9999999999999999999999999999999.0);
+		wheel[2]->setVelocity(speed);
+		wheel[3]->setPosition(9999999999999999999999999999999.0);
+		wheel[3]->setVelocity(speed);
+	}
+
+	if(int (side) > 1)
+	{
+		wheel[0]->setPosition(9999999999999999999999999999999.0);
+		wheel[0]->setVelocity(speed + side);
+		wheel[1]->setPosition(9999999999999999999999999999999.0);
+		wheel[1]->setVelocity(speed + side);
 		wheel[2]->setPosition(9999999999999999999999999999999.0);
 		wheel[2]->setVelocity(0.2);
 		wheel[3]->setPosition(9999999999999999999999999999999.0);
 		wheel[3]->setVelocity(0.2);
 	}
-	else
+
+	if(int (side) < 1)
 	{
 		wheel[0]->setPosition(9999999999999999999999999999999.0);
 		wheel[0]->setVelocity(0.2);
 		wheel[1]->setPosition(9999999999999999999999999999999.0);
 		wheel[1]->setVelocity(0.2);
 		wheel[2]->setPosition(9999999999999999999999999999999.0);
-		wheel[2]->setVelocity(abs(value));
+		wheel[2]->setVelocity(abs(speed) + side);
 		wheel[3]->setPosition(9999999999999999999999999999999.0);
-		wheel[3]->setVelocity(abs(value));
-	}*/
+		wheel[3]->setVelocity(abs(speed) + side);
+	}
 }

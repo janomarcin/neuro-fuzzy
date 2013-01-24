@@ -7,8 +7,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.416179 -0.808095 -0.416867 1.71244
-  position -0.731097 0.9994 0.170483
+  orientation -0.348821 -0.834087 -0.427345 1.87679
+  position -1.21277 1.95929 -0.00471906
 }
 Background {
   skyColor [
@@ -20,13 +20,16 @@ PointLight {
 }
 DEF FLOOR CheckeredFloor {
 }
+CardboardBox {
+  translation 0.3 0.05 0
+  boxSize 0.1 0.1 0.6
+}
 WoodBox {
   translation 0 0.05 0.4
-  boxSize 0.1 0.1 0.1
+  boxSize 0.9 0.1 0.1
 }
 DEF GA Supervisor {
-  translation -5.12329e-05 0.0395211 0.000321817
-  rotation 0.987501 -0.000752661 0.157613 0.00812603
+  translation 0 0.05 0
   children [
     DEF SENSOR2 DistanceSensor {
       translation -0.03 0 0.1
@@ -43,7 +46,7 @@ DEF GA Supervisor {
       }
       lookupTable [
         0 0 0
-        0.2 3 0
+        0.2 10 0
       ]
     }
     DEF SENSOR1 DistanceSensor {
@@ -62,7 +65,7 @@ DEF GA Supervisor {
       }
       lookupTable [
         0 0 0
-        0.2 3 0
+        0.2 10 0
       ]
       type "laser"
     }
@@ -86,7 +89,7 @@ DEF GA Supervisor {
       boundingObject USE WHEEL
       physics DEF WHEEL_PH Physics {
       }
-      position 86.8503
+      position 87.0359
     }
     DEF WHEEL3 Servo {
       translation -0.06 0 0.05
@@ -108,7 +111,7 @@ DEF GA Supervisor {
       boundingObject USE WHEEL
       physics DEF WHEEL_PH Physics {
       }
-      position 86.8503
+      position 87.0359
     }
     DEF WHEEL2 Servo {
       translation 0.06 0 0.05
@@ -130,7 +133,7 @@ DEF GA Supervisor {
       boundingObject USE WHEEL
       physics DEF WHEEL_PH Physics {
       }
-      position 89.357
+      position 93.5256
     }
     DEF WHEEL1 Servo {
       translation 0.06 0 -0.05
@@ -153,7 +156,7 @@ DEF GA Supervisor {
       physics DEF WHEEL_PH Physics {
         centerOfMass 0.06 0 -0.05
       }
-      position 105.434
+      position 109.603
     }
     DEF BODY Shape {
       appearance Appearance {

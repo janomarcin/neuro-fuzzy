@@ -3,7 +3,7 @@
 #include "Anfis.h"
 
 
-Anfis::Anfis(int numberOfInputs, int numberOfLingvisticVariables,vector< vector< int > > rules,vector< vector< vector< double > > > MFsparameters,vector< vector < double > > adaptationFunctionParameters,vector< double > inputs)
+Anfis::Anfis(int numberOfInputs, int numberOfLingvisticVariables,vector< vector< int > > &rules,vector< vector< vector< double > > > &MFsparameters,vector< vector < double > > &adaptationFunctionParameters,vector< double > &inputs)
 {
 	//konfiguracia celeho anfisu - len raz
 	setNumberOfInputs(numberOfInputs);
@@ -22,8 +22,20 @@ Anfis::Anfis(int numberOfInputs, int numberOfLingvisticVariables,vector< vector<
 double Anfis::getOutputValue()
 {
 	countLayerTwoOutput();
+	/*for(int i = 0; i < layerTwoOutputs.size(); i++)
+	{
+		std::cout << "vystup na druhej vrstve z neuronu " << i << " je " << layerTwoOutputs[i] << std::endl;
+	}*/
 	countLayerThreeOutput();
+	/*for(int i = 0; i < layerThreeOutputs.size(); i++)
+	{
+		std::cout << "vystup na tretej vrstve z neuronu " << i << " je " << layerThreeOutputs[i] << std::endl;
+	}*/
 	countLayerFourOutput();
+	/*for(int i = 0; i < layerFourOutputs.size(); i++)
+	{
+		std::cout << "vystup na stvrtej vrstve z neuronu " << i << " je " << layerFourOutputs[i] << std::endl;
+	}*/
 	return countOutputLayer();  //nedorobena normalizacia na - hodnota 0 hodnota + hodnota !!!!!!!!!
 }
 
@@ -45,8 +57,9 @@ void Anfis::countLayerFourOutput()
 		sum = 0;
 		for(int j = 1; j < numberAnfisInputs; j++){//menovatel zacina od 1 nie 0
 			sum = sum + adaptationFunctionValues[i][j] * inputValues[j];
+			//std::cout << "adaptationFunctionValues[i][j] " << adaptationFunctionValues[i][j] << std::endl;
 		}
-		if(sum == 0)
+		if(sum == 0.0)
 		{
 			std::cout << "chyba pri vypocte adaptacnej funkcie, menovatel je nulovy!!!" << std::endl;
 			system("pause");
@@ -55,6 +68,7 @@ void Anfis::countLayerFourOutput()
 
 		layerOutputNoWeight = (adaptationFunctionValues[i][0] * inputValues[0])/sum;
 		layerFourOutputs[i] = layerOutputNoWeight * layerThreeOutputs[i];
+		//std::cout << "vystup na stvrtej vrstve z neuronu " << i << " je " << layerFourOutputs[i] << std::endl;
 	}
 }
 
@@ -71,10 +85,12 @@ void Anfis::countLayerThreeOutput()
 		std::cout << "nemozem urobit normalizaciu, menovatel je nulovy!!!" << std::endl;
 		system("pause");
 		exit(1);
+		//sum = 1;
 	}
 
 	for(int i = 0; i < layerThreeOutputs.size(); i++){
 		layerThreeOutputs[i] = layerTwoOutputs[i]/sum;
+		//std::cout << "vystup na tretej vrstve z neuronu " << i << " je " << layerThreeOutputs[i] << std::endl;
 	}
 }
 
@@ -101,7 +117,9 @@ void Anfis::countLayerTwoOutput()
 				//adaptationFunctionValues[vstup][0...pocet_vstupov-parametre adapt. funkcie] - parametre adaptacnej funkcie,   
 
 				degree = getDegreeMF(lingvisticVariablesValues[rules[j][0]][rules[j][1]][0],lingvisticVariablesValues[rules[j][0]][rules[j][1]][1],inputValues[rules[j][0]]);
+				//std::cout << "Miera prislusnosti " << degree << std::endl;
 				layerTwoOutputs[i] = layerTwoOutputs[i] * degree;
+				//std::cout << "vystup na druhej vrstve z neuronu " << i << " je " << layerTwoOutputs[i] << std::endl;
 			}
 		}
 	}

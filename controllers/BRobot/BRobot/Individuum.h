@@ -10,7 +10,7 @@ public:
 	Individuum(int length);
 	~Individuum(void);
 
-	void setLength(int value);
+	
 	int getLength();
 	void setFitness(double value);
 	double getFitness();

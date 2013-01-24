@@ -88,12 +88,18 @@
     <ClCompile Include="..\Webots srv API\TouchSensor.cpp" />
     <ClCompile Include="Anfis.cpp" />
     <ClCompile Include="BRobot.cpp" />
+    <ClCompile Include="CompareIndividuum.cpp" />
+    <ClCompile Include="EvolutionaryAlgorithm.cpp" />
+    <ClCompile Include="Individuum.cpp" />
     <ClCompile Include="MyRobot.cpp" />
     <ClCompile Include="RobotIO.cpp">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Webots)\include\controller\c;$(Webots)\include\controller\cpp</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CompareIndividuum.h" />
+    <ClInclude Include="EvolutionaryAlgorithm.h" />
+    <ClInclude Include="Individuum.h" />
     <ClInclude Include="MyRobot.h" />
     <ClInclude Include="RobotIO.h" />
   </ItemGroup>
