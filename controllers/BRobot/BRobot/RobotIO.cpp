@@ -42,27 +42,27 @@ void RobotIO::setSpeed(double speed, double side)
 		wheel[3]->setVelocity(speed);
 	}
 
-	if(int (side) > 1)
+	if(int (side) > 0)
 	{
 		wheel[0]->setPosition(9999999999999999999999999999999.0);
-		wheel[0]->setVelocity(speed + side);
+		wheel[0]->setVelocity(side);
 		wheel[1]->setPosition(9999999999999999999999999999999.0);
-		wheel[1]->setVelocity(speed + side);
+		wheel[1]->setVelocity(side);
 		wheel[2]->setPosition(9999999999999999999999999999999.0);
 		wheel[2]->setVelocity(0.2);
 		wheel[3]->setPosition(9999999999999999999999999999999.0);
 		wheel[3]->setVelocity(0.2);
 	}
 
-	if(int (side) < 1)
+	if(int (side) < 0)
 	{
 		wheel[0]->setPosition(9999999999999999999999999999999.0);
 		wheel[0]->setVelocity(0.2);
 		wheel[1]->setPosition(9999999999999999999999999999999.0);
 		wheel[1]->setVelocity(0.2);
 		wheel[2]->setPosition(9999999999999999999999999999999.0);
-		wheel[2]->setVelocity(abs(speed) + side);
+		wheel[2]->setVelocity(abs(side));
 		wheel[3]->setPosition(9999999999999999999999999999999.0);
-		wheel[3]->setVelocity(abs(speed) + side);
+		wheel[3]->setVelocity(abs(side));
 	}
 }

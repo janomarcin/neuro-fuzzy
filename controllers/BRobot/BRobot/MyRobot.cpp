@@ -7,8 +7,9 @@ MyRobot::MyRobot(void) : Supervisor()
 	rootNode = Supervisor::getRoot();
 	robotNode = Supervisor::getFromDef("GA");
 	field = robotNode->getField("translation");
+	rotation = robotNode->getField("rotation");
 	Supervisor::keyboardEnable(20);
-	evolutionaryAlgorithm = new EvolutionaryAlgorithm(18, 3);
+	evolutionaryAlgorithm = new EvolutionaryAlgorithm(18, pocetJedincov);
 	input.push_back(10.0);
 	input.push_back(10.0);
 	speed = 2.0;
@@ -160,55 +161,86 @@ MyRobot::~MyRobot(void)
 void MyRobot::run() 
 {
 	input.clear();
-	std::vector<double> adaptations;
+	
 	//Supervisor::startMovie("Roman", 400, 600, 1, 100);
 	evolutionaryAlgorithm->initPopulation();
+	cout << "inicializacia - nulta generacia:" << endl;
 
-for(int pocet = 0; pocet < 10; pocet++)
-{
-	const double INITIAL[3] = { 0, 0.5, 0 };
-	field->setSFVec3f(INITIAL);
+	const double INITIALP[3] = { 0, 0.5, 0 };
+	const double INITIALR[4] = {0.0, 0.0, 1.0, 0.0};
 
-	for(int i = 0; i < 3; i++)
+	for(int i = 0; i < pocetJedincov; i++)
 	{
-		adaptations = evolutionaryAlgorithm->population[i]->getIndividuum();
-		/*for(int j = 0; j < adaptations.size(); j++)
+		field->setSFVec3f(INITIALP);
+		rotation->setSFRotation(INITIALR);
+		evaluateIndividuum(i);
+		cout << "jedinec " << i << ":" << evolutionaryAlgorithm->population[i]->getFitness() << endl;
+	}
+
+	for(int pocet = 0; pocet < 50; pocet++) //pocet cyklov
+	{
+		cout << "generacia: " << pocet << endl;
+		evolutionaryAlgorithm->crossing();
+		evolutionaryAlgorithm->mutation();
+		
+		for(int as = pocetJedincov; as < evolutionaryAlgorithm->population.size(); as++)
 		{
-			cout << adaptations[j] << " ";
-		}*/
+			field->setSFVec3f(INITIALP);
+			rotation->setSFRotation(INITIALR);
+			evaluateIndividuum(as);
+			cout << "jedinec " << as << ":" << evolutionaryAlgorithm->population[as]->getFitness() << endl;
+		}
+
+		evolutionaryAlgorithm->substitution();
+	}
+
+	std::cout << "Faza zivota " << std::endl;
+	for(int h = 0; h < evolutionaryAlgorithm->population.size(); h++)
+		cout << "jedinec " << h << ":" << evolutionaryAlgorithm->population[h]->getFitness() << endl;
+	//std::vector<double> adaptations = evolutionaryAlgorithm->population[0]->getIndividuum();
+	Supervisor::startMovie("Roman", 400, 600, 1, 100);
+	field->setSFVec3f(INITIALP);
+	rotation->setSFRotation(INITIALR);
+	evaluateIndividuum(0);
+	Supervisor::stopMovie();
+}
+	//Supervisor::stopMovie();
+
+
+void MyRobot::evaluateIndividuum(int index){
+
+	std::vector<double> adaptations;
+	adaptations = evolutionaryAlgorithm->population[index]->getIndividuum();
 
 		int s = 0;
 		for(int j = 0; j < adaptations.size()/2; j++)
 		{
 				adaptation[j][0] = adaptations[s];
-				std::cout << "adaptation[j][0] " << adaptation[j][0] << endl;
 				s++;
 				adaptation[j][1] = adaptations[s];
-				std::cout << "adaptation[j][1] " << adaptation[j][1] << endl;
 				s++;
 		}
 
-		/*for(int j = 0; j < adaptations.size(); j++)
-		{
-			cout << adaptations[j] << " ";
-		}*/
-
 		anfis->setAdaptationFunctionValues(adaptation);
 
-		for (double t = 0.0; t < 14400.0; t+= STEP) 
+		getFitness();
+		
+		const double *pos = field->getSFVec3f();
+		double dist = sqrt(pos[0] * pos[0] + pos[2] * pos[2]);
+		evolutionaryAlgorithm->population[index]->setFitness(-dist);
+		std::cout <<"dist = " << dist << std::endl;
+		const double INITIALP[3] = { 0, 0.5, 0 };
+		//const double INITIALR[4] = { 0, 0, 0 };
+		field->setSFVec3f(INITIALP);
+		//field->setSFRotation(INITIALR);
+}
+
+void MyRobot::getFitness()
+{
+		for (double t = 0.0; t < 50400.0; t+= STEP) 
 		{
 			input.clear();
 			robotIO.setSpeed(speed, side);
-			/*
-			char key = Supervisor::keyboardGetKey();
-			if(key == 'W')
-				speed += 0.2;
-			if(key == 'S')
-				speed += -0.2;
-			if(key == 'D')
-				side += 0.2;
-			if(key == 'A')
-				side -= 0.2;*/
 			robotIO.getSensorData(input);
 
 			for(int j = 0; j < input.size(); j++)
@@ -216,43 +248,18 @@ for(int pocet = 0; pocet < 10; pocet++)
 				if(input[j] > 0)
 				{
 					input[j] = input[j];
-					//std::cout << input[j] << std::endl;
 				}
 				else
 				{
 					input[j] = 5.0;
-					//std::cout << input[j] << std::endl;
 				}
 			}
 
-			//std::cout << std::endl;
-
 			anfis->setInputValues(input);
-			//std::cout << std::endl;
-			//std::cout << " anfis " << anfis->getOutputValue() << std::endl; //vystup z anfisu
-			evolutionaryAlgorithm->population[i]->setFitness(rand());
+			robotIO.setSpeed(speed, 0.0);
 			robotIO.setSpeed(speed,anfis->getOutputValue());
 			step(STEP);
 		}
-		const double *pos = field->getSFVec3f();
-		double dist = sqrt(pos[0] * pos[0] + pos[2] * pos[2]);
-
-		std::cout <<"dist = " << dist << std::endl;
-		const double INITIAL[3] = { 0, 0.5, 0 };
-		field->setSFVec3f(INITIAL);
-		//Supervisor::stopMovie();
-	}
-
-	for(int ds = 0; ds < 3; ds++)
-	{
-		evolutionaryAlgorithm->crossing();
-		//evolutionaryAlgorithm->mutation();
-		//evolutionaryAlgorithm->population[i]->setFitness(rand());
-		//evolutionaryAlgorithm->substitution();
-	}
-	//step(STEP);
-}
-	//Supervisor::stopMovie();
 }
 
 void MyRobot::loadFileData()

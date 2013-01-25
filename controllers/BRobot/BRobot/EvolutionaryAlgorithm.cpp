@@ -18,6 +18,7 @@ EvolutionaryAlgorithm::EvolutionaryAlgorithm(int length,int numberOfIndividuums)
 
 void EvolutionaryAlgorithm::crossing()
 {
+	cout << "Spustam crossing " << endl;
 	vector<double> parent1;
 	vector<double> parent2;
 
@@ -35,8 +36,9 @@ void EvolutionaryAlgorithm::crossing()
 
 		sel1 = selection();
 		sel2 = selection();
+		cout << "sel1" << sel1 << " sel2" << sel2 << endl;
 		while (sel2 == sel1){
-			//std::cout << "selected identical" <<std::endl;
+			std::cout << "selected identical" <<std::endl;
 			sel2 = selection();
 		}
 
@@ -54,6 +56,8 @@ void EvolutionaryAlgorithm::crossing()
 		population.push_back(descendant1);
 		population.push_back(descendant2);
 	}
+
+	cout << "end crossing " << endl;
 }
 
 void EvolutionaryAlgorithm::substitution(){

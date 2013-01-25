@@ -18,6 +18,7 @@
 class MyRobot : webots::Supervisor
 {
 private:
+	static const int pocetJedincov = 50;
 	int numberOfInputs;
 	int numberOfLingvisticVariables;
 	EvolutionaryAlgorithm *evolutionaryAlgorithm;
@@ -34,6 +35,7 @@ private:
 	webots::Node *rootNode;
 	webots::Node *robotNode;
 	webots::Field *field;
+	webots::Field *rotation;
 
 	std::vector<std::string> fileData;
 	static const int STEP = 1000;
@@ -47,5 +49,7 @@ public:
 public:
 	void run();
 	void loadFileData();
+	void getFitness();
+	void evaluateIndividuum(int index);
 };
 
